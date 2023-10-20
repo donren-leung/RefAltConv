@@ -15,6 +15,8 @@ pysam = "^0.22.0"
 [tool.poetry.group.test.dependencies]
 pytest = "^7.4.2"
 coverage = "^7.3.2"
+flake8 = "^6.1.0"
+flake8-bugbear = "^23.9.16"
 
 [tool.pytest.ini_options]
 markers = [
@@ -23,6 +25,20 @@ markers = [
 
 [tool.coverage.run]
 omit = [".*", "*/site-packages/*"]
+
+[flake8]
+max-line-length = 88
+max-complexity = 10
+select = "C,E,F,W,B,B950"
+ignore = "E203,E501,W503"
+exclude = """
+    .git,
+    __pycache__,
+    *.egg-info,
+    .nox,
+    .pytest_cache,
+    .mypy_cache
+"""
 
 [build-system]
 requires = ["poetry-core"]

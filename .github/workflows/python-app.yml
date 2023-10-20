@@ -63,4 +63,4 @@ jobs:
         run: |
           source .venv/bin/activate
           pytest tests/ -m "not largefile" -vvv -s
-          poetry run coverage run -m pytest && poetry run coverage report -m
+          poetry run coverage run --branch -m pytest -m "not largefile"  && poetry run coverage report -m
