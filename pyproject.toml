@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "varconv"
+version = "0.1.0"
+description = ""
+authors = ["Donren Leung <donren.leung@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.13"
+biopython = "^1.81"
+numpy = "^1.26.1"
+pysam = "^0.22.0"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.2"
+coverage = "^7.3.2"
+
+[tool.pytest.ini_options]
+markers = [
+    "largefile: marks tests as requiring a hg38 reference genome at working_files/hg38.fa",
+]
+
+[tool.coverage.run]
+omit = [".*", "*/site-packages/*"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
