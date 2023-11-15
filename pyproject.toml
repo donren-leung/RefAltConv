@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "varconv"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["Donren Leung <donren.leung@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.11,<3.13"
+python = ">=3.9,<3.13"
 biopython = "^1.81"
 numpy = "^1.26.1"
 pysam = "^0.22.0"
