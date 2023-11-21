@@ -58,13 +58,13 @@ class VariantContext():
         if window_length is not None:
             window_length -= 1
             return f"{self.before[-window_length:]}{self.ref_allele}{self.after[:window_length]}"
-        return f"{self.before}{self.variant.ref_allele}{self.after}"
+        return f"{self.before}{self.ref_allele}{self.after}"
     
     def alt_sequence_fwd(self, window_length: Optional[int]=None) -> str:
         if window_length is not None:
             window_length -= 1
             return f"{self.before[-window_length:]}{self.alt_allele}{self.after[:window_length]}"
-        return f"{self.before}{self.variant.alt_allele}{self.after}"
+        return f"{self.before}{self.alt_allele}{self.after}"
     
     def ref_sequence_rev(self, window_length: Optional[int]=None) -> str:
         return reverse_complement(self.ref_sequence_fwd(window_length))
@@ -73,9 +73,17 @@ class VariantContext():
         return reverse_complement(self.alt_sequence_fwd(window_length))
 
     def debug(self) -> tuple:
-        tup = (self.before, self.variant.ref_allele, self.after, self.variant.alt_allele)
+        tup = (self.before, self.ref_allele, self.after, self.alt_allele)
         return tup, [len(elem) for elem in tup]
     
+    @property
+    def ref_allele(self):
+        return self.variant.ref_allele
+
+    @property
+    def alt_allele(self):
+        return self.variant.alt_allele
+
     def __repr__(self) -> str:
         return str(self.debug())
     
